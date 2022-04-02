@@ -1,0 +1,45 @@
+body {
+  
+}
+header{
+    background-color: rgb(179, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+.container {
+    display: flex;
+    position: left;
+    background-color: blue;
+    height: 93vh;
+    width: 33%;
+    margin-left: 0%;
+}
+h3 {
+    text-align: center;
+}
+button {
+    width: 100%;
+}
+.card1 {
+    padding: 3rem;
+    width: 58vw;
+    height:50vh;
+    background-color: rgb(177, 13, 169);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 4rem;
+}
+.card2 {
+    padding: 3rem;
+    width: 58vw;
+    height:40vh;
+    background-color: rgb(0, 113, 189);
+    display: inline;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}

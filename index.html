@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<header class="title">Weather Dashboard</header>
+    <main class="container">
+        <div class="card-search col-md-12">
+            <p><h3>Search for a City:</h3></p>
+            <form>
+                <div class="mb-3">
+                  <label for="citySearch" class="form-label"></label>
+                    <input type="city" class="form-control" id="searchCityInput" aria-describedby="searchHelp">
+                        <div id="searchContainer" class="form-text"></div>
+                </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+<div class="row">
+        <div class="card1 col-md-12" name="citySearchHistory">
+            <div class="card-body1 col-md-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit iusto laborum, qui vitae cupiditate non a ut id nihil itaque, nisi officiis voluptatem inventore facere. Deleniti in quod laudantium veniam!</div>
+        </div>
+    <div class="card2 col-md-12">
+        <div class="card-body2 col-md-12"></div>
+    </div>
+</div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

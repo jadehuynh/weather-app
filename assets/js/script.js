@@ -9,11 +9,29 @@ var apiKey= '44c239f287406de19fc1d0b60b5fc89b'
 var lat=""
 var lon=""
 
+var zipCode = $('#searchCityInput').val("");
+var countryCode = "US"
+var convertZip = 'https://api.openweathermap.org/geo/1.0/zip?zip='+ zipCode + ","+ countryCode + '&appid=' + apiKey;
+
+//console.log(convertZip);
 
 
-var zipCode = $('#searchCityInput')
-var countryCode = "840"
-var convertZip = 'http://api.openweathermap.org/geo/1.0/zip?zip='+ zipCode + countryCode + '&appid=' + apiKey;
 
-var apiUrl = 'https://api.github.com/users/' + user + '/repos';
 
+function test (convertZip) { 
+    var obj = jQuery.parseJSON(convertZip);
+
+}
+
+test();
+console.log(obj)
+
+// fetch(apiUrl).then(function (response) {
+//     if (response.ok) {
+//       response.json().then(function (data) {
+//         displayRepos(data.items, language);
+//       });
+//     } else {
+//       alert('Error: ' + response.statusText);
+//     }
+//   });

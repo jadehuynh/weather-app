@@ -29,6 +29,7 @@ function forecast (lon, lat) {
         response.json()
         .then(function(data) {
             console.log(data)
+            console.log(data[0].daily[0])
         })
     })
 }
@@ -63,11 +64,10 @@ function getWeather(lon, lat) {
    })
 }
 
-var displayData = function (repos, searchTerm) {
-    if (repos.length === 0) {
-      repoContainerEl.textContent = 'No repositories found.';
+var displayData = function () {
+    getWeather(data[0].lon,data[0].lat).textContent.value
+    forecast(data[0].lon,data[0].lat).textContent.value
       return;
     }
-}
 //getCoordinates("")
 //function to take the corrdinates from the convert zipcode api to 

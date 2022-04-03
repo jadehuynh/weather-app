@@ -4,12 +4,37 @@ var apiKey= '44c239f287406de19fc1d0b60b5fc89b'
 
 var searchInput= document.getElementById('searchCityInput')
 var searchButton= document.getElementById('search-btn')
+var searchList= document.getElementById('searchHistory')
+var searchMistory = [];
+
 
 searchButton.addEventListener('click', function(event) {
     event.preventDefault()
     getCoordinates(searchInput.value)
+    
+    var listedCities = searchMistory
+    var butto = document.createElement("button");
+
+    searchList.append(butto)
+    button.textContent =listedCities
+    listedCities= JSON.parse(searchInput)
+
+
+    searchHistory.push(listedCities);
+    searchInput.value = "";
+
+    console.log(searchHistory)
+    
 })
 
+function renderSearchHistory() {
+    textContent(getCoordinates("atlanta")).display
+    searchList.append(renderWeather).textContent= searchHistory
+
+    
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+}
 //***attempted to try converting zip code into lat and lon values with api provided below
     // var countryCode = "US"
     // var zipCode = $('#searchCityInput').val("");
@@ -62,27 +87,6 @@ function getWeather(lon, lat) {
        })
    })
 }
-
-
-
-
-var searchList= document.getElementById('#searchHistory')
-var searchHistory = [];
-
-function renderSearchHistory() {
-    textContent(getCoordinates("atlanta")).display
-    searchList.append(renderWeather).textContent= searchHistory
-
-    var li = document.createElement("li");
-    li.textContent = todo;
-    li.setAttribute("data-index", i);
-
-}
-
-todos.push(todoText);
-  todoInput.value = "";
-
-
 // var cardText1= document.querySelector('.card-body1')
 // var cardText2= document.querySelector('.card-body2')
 
@@ -91,14 +95,18 @@ todos.push(todoText);
 
 
 // var displayData = function () {
-//     if(searchButton.addEventListener('click', function(event) {}
+//     if(searchButton.addEventListener('click', function)
 //      === true )
     
 //     getWeather(data[0].lon,data[0].lat).textContent.value
 //     forecast(data[0].lon,data[0].lat).textContent.value
     
-    
 //     return;
+
 //     }
+
+// displayData()
+// console.log(displayData)
+
 //getCoordinates("")
 //function to take the corrdinates from the convert zipcode api to 

@@ -1,7 +1,7 @@
 var apiKey= '44c239f287406de19fc1d0b60b5fc89b'
 //***tried to practice breaking down the api and seeing what values to make into variables to concatenate
     // var apiCitySearch= 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + "," + stateCode + "," + countryCode + '&limit=' + limit + '&appid=' + apiKey;
-
+var card1 = document.getElementById('card-body1')
 var searchInput= document.getElementById('searchCityInput')
 var searchButton= document.getElementById('search-btn')
 var searchList= document.getElementById('searchHistory')
@@ -9,23 +9,35 @@ var searchList= document.getElementById('searchHistory')
 
 
 searchButton.addEventListener('click', function(event) {
+    card1.innerHTML="";
     event.preventDefault()
     getCoordinates(searchInput.value)
     
     //for (var i = 0; i < searchMistory.length; i++) {
-    var listedCities = searchInput
     var butto = document.createElement("button")
+    butto.textContent= searchInput.value
     let searchMistory = [];
 
     searchList.append(butto)
-    listedCities= JSON.parse(localStorage.getItem(searchInput, searchList));
-    butto.textContent =listedCities
+    listedCities= JSON.stringify(localStorage.getItem(searchInput, searchList));
+    
+    butto.addEventListener('click', function (event) {
+        card1.innerHTML="";
+        event.preventDefault()
+        getCoordinates(butto.textContent)
+        console.log(butto.textContent)
+        displayCityName(butto.textContent)
+    })
 
     // listedCities.textContent.value = "";
     // listedCities.push(searchMistory);
+    searchMistory.push(searchInput.value)
+   
 
     console.log(searchMistory)
+    displayCityName(searchInput.value)
     })
+
 
 // function renderSearchHistory() {
 //     textContent(getCoordinates("atlanta")).display
@@ -53,10 +65,11 @@ function forecast (lon, lat) {
     .then(function(response){
         response.json()
         .then(function(data) {
-            var newData = 
+        
         
             console.log(data)
-            console.log(daily[0].temp.eve)
+            console.log(data.daily[0].temp.day)
+            
             
 
         })
@@ -85,47 +98,39 @@ function getWeather(lon, lat) {
     var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
     var getLon = "&lon=" + lon
-    var rest = "&units=imperial&limit=1&appid="
+    var rest = "&exclude=daily,hourly,minutely,alert&units=imperial&limit=1&appid="
 
     fetch(getWeatherUrl + getLat + getLon + rest + apiKey)
    .then(function(response){
        response.json()
        .then(function(data) {
            console.log(data)
+           displayCurrentData(data)
        })
    })
 }
 
-// function displaygetWeather() {
-//     const weather =  getWeather(data)
-//     const weatherDiv = document.getElementById("card-body1")
-
-//     weatherDiv.innerHTML= weather
-// }
-
-// displaygetWeather()
-// console.log(weather)
-
-// var cardText1= document.querySelector('.card-body1')
-// var cardText2= document.querySelector('.card-body2')
-
-// cardText1.getWeather().textContent.value
-// cardText2.getWeather().textContent.value
 
 
-// var displayData = function () {
-//     if(searchButton.addEventListener('click', function)
-//      === true )
-    
-//     getWeather(data[0].lon,data[0].lat).textContent.value
-//     forecast(data[0].lon,data[0].lat).textContent.value
-    
-//     return;
+function displayCityName(name) {
+    var searchedCity = document.createElement("h1")
+    searchedCity.textContent = name
 
-//     }
-
-// displayData()
-// console.log(displayData)
-
+    card1.appendChild(searchedCity)
+}
+function displayCurrentData (data) {
+    var currentTemp= document.createElement("h3")
+    currentTemp.textContent= "Temp: " + data.current.temp
+    card1.appendChild(currentTemp)
+    var currentWind= document.createElement("h3")
+    currentWind.textContent= "Wind Speed: " + data.current.wind_speed
+    card1.appendChild(currentWind)
+    var currentHumidity= document.createElement("h3")
+    currentHumidity.textContent= "Humidity: " + data.current.humidity
+    card1.appendChild(currentHumidity)
+    var uvIndex= document.createElement("h3")
+    uvIndex.textContent="UV Index: " + data.current.uvi
+    card1.appendChild(uvIndex)
+}
 //getCoordinates("")
 //function to take the corrdinates from the convert zipcode api to

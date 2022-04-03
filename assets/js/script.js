@@ -18,17 +18,14 @@ searchButton.addEventListener('click', function(event) {
     let searchMistory = [];
 
     searchList.append(butto)
+    listedCities= JSON.parse(localStorage.getItem(searchInput, searchList));
     butto.textContent =listedCities
-    listedCities= JSON.parse(localStorage.getItem(searchInput));
 
-    listedCities.innerHTML.value = "";
-    listedCities.push(searchMistory);
+    // listedCities.textContent.value = "";
+    // listedCities.push(searchMistory);
 
     console.log(searchMistory)
     })
-
-function
-    
 
 // function renderSearchHistory() {
 //     textContent(getCoordinates("atlanta")).display
@@ -56,19 +53,19 @@ function forecast (lon, lat) {
     .then(function(response){
         response.json()
         .then(function(data) {
+            var newData = 
+        
             console.log(data)
+            console.log(daily[0].temp.eve)
             
 
         })
     })
 }
-function displayForecast (data) {
-    var forecastCard = document.getElementById('card-body2')
+// function displayForecast (data) {
+//     var forecastCard = document.getElementById('card-body2')
 
-}
-
-
-
+// }
 function getCoordinates (city) { 
    var apiCitySearch = 'https://api.openweathermap.org/geo/1.0/direct?q='
    var rest = "&limit=1&appid="

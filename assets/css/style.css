@@ -1,5 +1,5 @@
 body {
-  
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 header{
     background: linear-gradient(#3f87a6, #f69d3c);;
@@ -7,6 +7,7 @@ header{
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    padding: 3rem;
 }
 .container {
     display: flex;
@@ -18,6 +19,14 @@ header{
 }
 h3 {
     text-align: center;
+    font-weight: bold;
+}
+h4 {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-bottom: 2rem;
+    color: white;
 }
 button {
     width: 100%;
@@ -34,7 +43,7 @@ button {
     margin-left: 4rem;
     margin-top: 1rem;
 }
-.card2 {
+.box {
     padding: 3rem;
     width: 58vw;
     height:40vh;
@@ -44,4 +53,9 @@ button {
     justify-content: center;
     margin-left: 4rem;
     margin-top: 1rem;
+}
+#forcastBody2 {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem;
 }

@@ -2,7 +2,7 @@ body {
   
 }
 header{
-    background-color: rgb(179, 255, 0);
+    background: linear-gradient(#3f87a6, #f69d3c);;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ header{
 .container {
     display: flex;
     position: left;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     height: 93vh;
     width: 33%;
     margin-left: 0%;
@@ -23,14 +23,16 @@ button {
     width: 100%;
 }
 .card1 {
+    border: black solid 3px;
     padding: 3rem;
     width: 58vw;
     height:50vh;
-    background-color: rgb(177, 13, 169);
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-items: flex-end;
     justify-content: center;
     margin-left: 4rem;
+    margin-top: 1rem;
 }
 .card2 {
     padding: 3rem;

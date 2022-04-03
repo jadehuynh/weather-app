@@ -5,36 +5,39 @@ var apiKey= '44c239f287406de19fc1d0b60b5fc89b'
 var searchInput= document.getElementById('searchCityInput')
 var searchButton= document.getElementById('search-btn')
 var searchList= document.getElementById('searchHistory')
-var searchMistory = [];
+
 
 
 searchButton.addEventListener('click', function(event) {
     event.preventDefault()
     getCoordinates(searchInput.value)
     
-    var listedCities = searchMistory
-    var butto = document.createElement("button");
+    //for (var i = 0; i < searchMistory.length; i++) {
+    var listedCities = searchInput
+    var butto = document.createElement("button")
+    let searchMistory = [];
 
     searchList.append(butto)
-    button.textContent =listedCities
-    listedCities= JSON.parse(searchInput)
+    butto.textContent =listedCities
+    listedCities= JSON.parse(localStorage.getItem(searchInput));
 
+    listedCities.innerHTML.value = "";
+    listedCities.push(searchMistory);
 
-    searchHistory.push(listedCities);
-    searchInput.value = "";
+    console.log(searchMistory)
+    })
 
-    console.log(searchHistory)
+function
     
-})
 
-function renderSearchHistory() {
-    textContent(getCoordinates("atlanta")).display
-    searchList.append(renderWeather).textContent= searchHistory
+// function renderSearchHistory() {
+//     textContent(getCoordinates("atlanta")).display
+//     searchList.append(renderWeather).textContent= searchHistory
 
     
-    li.textContent = todo;
-    li.setAttribute("data-index", i);
-}
+//     li.textContent = todo;
+//     li.setAttribute("data-index", i);
+// }
 //***attempted to try converting zip code into lat and lon values with api provided below
     // var countryCode = "US"
     // var zipCode = $('#searchCityInput').val("");
@@ -54,9 +57,17 @@ function forecast (lon, lat) {
         response.json()
         .then(function(data) {
             console.log(data)
+            
+
         })
     })
 }
+function displayForecast (data) {
+    var forecastCard = document.getElementById('card-body2')
+
+}
+
+
 
 function getCoordinates (city) { 
    var apiCitySearch = 'https://api.openweathermap.org/geo/1.0/direct?q='
@@ -74,7 +85,7 @@ function getCoordinates (city) {
 }
 
 function getWeather(lon, lat) {
-    var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?'
+    var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
     var getLon = "&lon=" + lon
     var rest = "&units=imperial&limit=1&appid="
@@ -87,6 +98,17 @@ function getWeather(lon, lat) {
        })
    })
 }
+
+// function displaygetWeather() {
+//     const weather =  getWeather(data)
+//     const weatherDiv = document.getElementById("card-body1")
+
+//     weatherDiv.innerHTML= weather
+// }
+
+// displaygetWeather()
+// console.log(weather)
+
 // var cardText1= document.querySelector('.card-body1')
 // var cardText2= document.querySelector('.card-body2')
 
@@ -109,4 +131,4 @@ function getWeather(lon, lat) {
 // console.log(displayData)
 
 //getCoordinates("")
-//function to take the corrdinates from the convert zipcode api to 
+//function to take the corrdinates from the convert zipcode api to

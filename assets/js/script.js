@@ -29,7 +29,6 @@ function forecast (lon, lat) {
         response.json()
         .then(function(data) {
             console.log(data)
-            console.log(data[0].daily[0])
         })
     })
 }
@@ -64,10 +63,42 @@ function getWeather(lon, lat) {
    })
 }
 
-var displayData = function () {
-    getWeather(data[0].lon,data[0].lat).textContent.value
-    forecast(data[0].lon,data[0].lat).textContent.value
-      return;
-    }
+
+
+
+var searchList= document.getElementById('#searchHistory')
+var searchHistory = [];
+
+function renderSearchHistory() {
+    textContent(getCoordinates("atlanta")).display
+    searchList.append(renderWeather).textContent= searchHistory
+
+    var li = document.createElement("li");
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+
+}
+
+todos.push(todoText);
+  todoInput.value = "";
+
+
+// var cardText1= document.querySelector('.card-body1')
+// var cardText2= document.querySelector('.card-body2')
+
+// cardText1.getWeather().textContent.value
+// cardText2.getWeather().textContent.value
+
+
+// var displayData = function () {
+//     if(searchButton.addEventListener('click', function(event) {}
+//      === true )
+    
+//     getWeather(data[0].lon,data[0].lat).textContent.value
+//     forecast(data[0].lon,data[0].lat).textContent.value
+    
+    
+//     return;
+//     }
 //getCoordinates("")
 //function to take the corrdinates from the convert zipcode api to 

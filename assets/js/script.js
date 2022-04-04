@@ -44,7 +44,14 @@ searchButton.addEventListener('click', function(event) {
     }
     })
 
-
+    function displayDate () {
+        var showDate = document.createElement("h1")
+        var currentDate = moment().format("MMMM Do YYYY");
+        
+        console.log(currentDate)
+        displayDate()
+    }
+    card1.textContent= currentDate
 // function renderSearchHistory() {
 //     textContent(getCoordinates("atlanta")).display
 //     searchList.append(renderWeather).textContent= searchHistory
@@ -98,7 +105,6 @@ function getCoordinates (city) {
    })
 
 }
-
 function getWeather(lon, lat) {
     var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
@@ -114,36 +120,25 @@ function getWeather(lon, lat) {
        })
    })
 }
-
-
-
-
-
 function displayCityName(name) {
     var searchedCity = document.createElement("h1")
     searchedCity.textContent = name
 
     card1.appendChild(searchedCity)
-
-    // function displayDate () {
-    //     var showDate = document.createElement("h1")
-    //     var currentDate = moment().format("MMMM Do YYYY");
-    //     card1.textContent= currentDate
-    //     console.log(currentDate)
-    // }
 }
+ // var presentDate = document.createElement("h3")
+    // var currentDate = moment().format("MMMM Do YY");
+    // card1.textContent= currentDate
+    //console.log(currentDate)
 
 
 
 
-
+// var weatherIcon = document.createElement("p")
+// weatherIcon.appendChild(<img src='https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png' alt='Icon depicting weather.'></img>)
 
 
 function displayCurrentData (data) {
-    var presentDate = document.createElement("h3")
-    var currentDate = moment().format("MMM Do YY");
-    card1.textContent= currentDate
-    //console.log(currentDate)
     var currentTemp= document.createElement("h3")
     currentTemp.textContent= "Temp: " + data.current.temp
     card1.appendChild(currentTemp)

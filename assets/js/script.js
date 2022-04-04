@@ -124,6 +124,9 @@ function displayCityName(name) {
     card1.appendChild(searchedCity)
 }
 function displayCurrentData (data) {
+    var currentDate = moment().add(i, "days").format("dddd, MMMM Do YYYY");
+    var cityName= document.createElement("h1")
+    card1.appendChild(citytName) + forecastDate
     var currentTemp= document.createElement("h3")
     currentTemp.textContent= "Temp: " + data.current.temp
     card1.appendChild(currentTemp)
@@ -150,9 +153,14 @@ function displayForecastData (data) {
         temp.textContent="Temp: " + data.daily[i].temp.day
         container.appendChild(temp)
         card2.appendChild(container)
-    }
+        var wind= document.createElement("h5")
+        wind.textContent="Wind Speed: " + data.daily[i].wind_speed
+        container.appendChild(wind)
+        card2.appendChild(container)
+        var humidity= document.createElement("h5")
+        humidity.textContent="Humidity: " + data.daily[i].humidity
+        container.appendChild(humidity)
+        card2.appendChild(container)
+    }}
 
-}
-
-//getCoordinates("")
-//function to take the corrdinates from the convert zipcode api to
+    

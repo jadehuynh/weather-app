@@ -5,9 +5,9 @@ var card1 = document.getElementById('card-body1')
 var searchInput= document.getElementById('searchCityInput')
 var searchButton= document.getElementById('search-btn')
 var searchList= document.getElementById('searchHistory')
+var card2= document.getElementById('card2')
 
-
-
+let searchMistory = [];
 searchButton.addEventListener('click', function(event) {
     card1.innerHTML="";
     event.preventDefault()
@@ -16,10 +16,9 @@ searchButton.addEventListener('click', function(event) {
     //for (var i = 0; i < searchMistory.length; i++) {
     var butto = document.createElement("button")
     butto.textContent= searchInput.value
-    let searchMistory = [];
+    
 
     searchList.append(butto)
-    listedCities= JSON.stringify(localStorage.getItem(searchInput, searchList));
     
     butto.addEventListener('click', function (event) {
         card1.innerHTML="";
@@ -29,13 +28,20 @@ searchButton.addEventListener('click', function(event) {
         displayCityName(butto.textContent)
     })
 
+    searchMistory.push(searchInput.value)
+    //write setItem here
+        for (var i = 0; i < searchMistory.length; i++) {
+            localStorage.setItem("cities",searchMistory)
+        }
     // listedCities.textContent.value = "";
     // listedCities.push(searchMistory);
-    searchMistory.push(searchInput.value)
-   
-
     console.log(searchMistory)
     displayCityName(searchInput.value)
+
+    for (var i = 0; i < searchMistory.length; i++) {
+        localStorage.getItem("cities")
+        console.log(localStorage.getItem("cities"))
+    }
     })
 
 
@@ -68,9 +74,8 @@ function forecast (lon, lat) {
         
         
             console.log(data)
-            console.log(data.daily[0].temp.day)
-            
-            
+        
+            displayForecastData(data)
 
         })
     })
@@ -132,5 +137,22 @@ function displayCurrentData (data) {
     uvIndex.textContent="UV Index: " + data.current.uvi
     card1.appendChild(uvIndex)
 }
+
+function displayForecastData (data) {
+    console.log(data.daily)
+    card2.innerHTML="";
+    for (var i = 1; i < 6; i++) {
+        var container= document.createElement("div")
+        container.classList.add("card-body2")
+        container.classList.add("col-2")
+        container.setAttribute("id","forecastBody2")
+        var temp= document.createElement("h5")
+        temp.textContent="Temp: " + data.daily[i].temp.day
+        container.appendChild(temp)
+        card2.appendChild(container)
+    }
+
+}
+
 //getCoordinates("")
 //function to take the corrdinates from the convert zipcode api to

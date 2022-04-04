@@ -65,7 +65,7 @@ function forecast (lon, lat) {
     var getForecastUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
     var getLon = "&lon=" + lon
-    var rest = "&exclude=hourly,minutely,current,alert&units=imperial&appid="
+    var rest = "&units=imperial&appid="
 
     fetch(getForecastUrl + getLat + getLon + rest + apiKey)
     .then(function(response){
@@ -103,7 +103,7 @@ function getWeather(lon, lat) {
     var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
     var getLon = "&lon=" + lon
-    var rest = "&exclude=daily,hourly,minutely,alert&units=imperial&limit=1&appid="
+    var rest = "&units=imperial&limit=1&appid="
 
     fetch(getWeatherUrl + getLat + getLon + rest + apiKey)
    .then(function(response){
@@ -117,16 +117,33 @@ function getWeather(lon, lat) {
 
 
 
+
+
 function displayCityName(name) {
     var searchedCity = document.createElement("h1")
     searchedCity.textContent = name
 
     card1.appendChild(searchedCity)
+
+    // function displayDate () {
+    //     var showDate = document.createElement("h1")
+    //     var currentDate = moment().format("MMMM Do YYYY");
+    //     card1.textContent= currentDate
+    //     console.log(currentDate)
+    // }
 }
+
+
+
+
+
+
+
 function displayCurrentData (data) {
-    var currentDate = moment().add(i, "days").format("dddd, MMMM Do YYYY");
-    var cityName= document.createElement("h1")
-    card1.appendChild(citytName) + forecastDate
+    var presentDate = document.createElement("h3")
+    var currentDate = moment().format("MMM Do YY");
+    card1.textContent= currentDate
+    //console.log(currentDate)
     var currentTemp= document.createElement("h3")
     currentTemp.textContent= "Temp: " + data.current.temp
     card1.appendChild(currentTemp)
@@ -139,6 +156,8 @@ function displayCurrentData (data) {
     var uvIndex= document.createElement("h3")
     uvIndex.textContent="UV Index: " + data.current.uvi
     card1.appendChild(uvIndex)
+
+    
 }
 
 function displayForecastData (data) {
@@ -161,6 +180,8 @@ function displayForecastData (data) {
         humidity.textContent="Humidity: " + data.daily[i].humidity
         container.appendChild(humidity)
         card2.appendChild(container)
-    }}
+        
+    }
+}
 
     

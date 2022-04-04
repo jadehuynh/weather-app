@@ -57,5 +57,7 @@ button {
 #forcastBody2 {
     display: flex;
     justify-content: space-evenly;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    border: black solid 2px;
+    text-align: center;
 }

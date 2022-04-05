@@ -12,33 +12,33 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+     <link rel="stylesheet" href="./assets/css/style.css">
+ </head>
 <body>
+<!--header title at top of webpage with gradient effects-->
 <header class="title">Weather Dashboard</header>
+    <!--container for left column holding the search form and searched city history-->
     <main class="container">
         <div class="card-search col-md-12">
             <p><h3>Search for a City:</h3></p>
-            <form>
-                <div class="mb-3">
-                  <label for="citySearch" class="form-label"></label>
-                    <input type="city" class="form-control" id="searchCityInput" aria-describedby="searchHelp">
-                        <div id="searchContainer" class="form-text"></div>
-                </div>
-                    <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
-            </form>
+                <form>
+                    <div class="mb-3">
+                        <label for="citySearch" class="form-label"></label>
+                            <input type="city" class="form-control" id="searchCityInput" aria-describedby="searchHelp">
+                            <div id="searchContainer" class="form-text"></div>
+                    </div>
+                        <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
+                </form>
+            <!--unordered list holding the searched cities from the form-->    
             <ul id="searchHistory"></ul>
         </div>
-<div class="row">
+    <div class="row">
         <div class="card1 col-md-12" name="citySearchHistory">
             <div class="card-body1 col-md-12" id="card-body1"></div>
         </div>
+       <!--div containing the dynamically generated data for the next 5 days--> 
     <div class="box col-md-12"><h4>5 Day Forecast</h4>
-        <div id="card2" class="row">
-
-        </div>
-    </div>
-</div>
+        <div id="card2" class="row"></div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

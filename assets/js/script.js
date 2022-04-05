@@ -1,74 +1,52 @@
 var apiKey= '44c239f287406de19fc1d0b60b5fc89b'
-//***tried to practice breaking down the api and seeing what values to make into variables to concatenate
-    // var apiCitySearch= 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + "," + stateCode + "," + countryCode + '&limit=' + limit + '&appid=' + apiKey;
 var card1 = document.getElementById('card-body1')
 var searchInput= document.getElementById('searchCityInput')
 var searchButton= document.getElementById('search-btn')
 var searchList= document.getElementById('searchHistory')
 var card2= document.getElementById('card2')
 
+//array to push searched cities into- I realized I name two values searchHistory and easily change this to search Mistory
 let searchMistory = [];
+
+//event listener function calling getCoordinates from the city
 searchButton.addEventListener('click', function(event) {
     card1.innerHTML="";
     event.preventDefault()
     getCoordinates(searchInput.value)
     
-    //for (var i = 0; i < searchMistory.length; i++) {
+    //Again, my button variable was renamed butto for button without the last letter. This stores the searched cities as a button
     var butto = document.createElement("button")
     butto.textContent= searchInput.value
     
-
+    //adding search history buttons to list element
     searchList.append(butto)
     
+    //event listener function to add searched cities to local storage
     butto.addEventListener('click', function (event) {
         card1.innerHTML="";
         event.preventDefault()
         getCoordinates(butto.textContent)
-        console.log(butto.textContent)
         displayCityName(butto.textContent)
     })
-
     searchMistory.push(searchInput.value)
-    //write setItem here
         for (var i = 0; i < searchMistory.length; i++) {
             localStorage.setItem("cities",searchMistory)
         }
-    // listedCities.textContent.value = "";
-    // listedCities.push(searchMistory);
-    console.log(searchMistory)
     displayCityName(searchInput.value)
 
     for (var i = 0; i < searchMistory.length; i++) {
         localStorage.getItem("cities")
-        //console.log(localStorage.getItem("cities"))
     }
     displayDate()
     })
     function displayDate () {
-        var showDate = document.createElement("h1")
+        var showDate = document.createElement("h2")
         var currentDate = moment().format("MMMM Do YYYY");
-        //var date= card1.current[0].dt
-        //date.textContent- 
-        //var reformatDate= moment(date, "X").format(1)
         card1.appendChild(showDate)
         showDate.textContent= currentDate
-        //console.log(currentDate)
     }
-// function renderSearchHistory() {
-//     textContent(getCoordinates("atlanta")).display
-//     searchList.append(renderWeather).textContent= searchHistory
 
-    
-//     li.textContent = todo;
-//     li.setAttribute("data-index", i);
-// }
-//***attempted to try converting zip code into lat and lon values with api provided below
-    // var countryCode = "US"
-    // var zipCode = $('#searchCityInput').val("");
-    // var convertZip = 'https://api.openweathermap.org/geo/1.0/zip?zip=' + zipCode + ","+ countryCode + '&appid=' + apiKey;
-        //select lat and lon values
-         //splice out "lat": "lat":44.2945 and "lon": in "lon":-93.2818
-        //the code for splicing to retrieve numeric values will go into lat and lon variables
+ //function retrieves the coordinates needed from the API url going through the promises to display the data throught the called function at the bottom
 function forecast (lon, lat) {
     var getForecastUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
@@ -79,19 +57,13 @@ function forecast (lon, lat) {
     .then(function(response){
         response.json()
         .then(function(data) {
-        
-        
-            console.log(data)
-        
+            
             displayForecastData(data)
-
         })
     })
 }
-// function displayForecast (data) {
-//     var forecastCard = document.getElementById('card-body2')
 
-// }
+//this function provides the coordinates for retrieving current day weather and a 5 day forecast and also has both functions called at the bottom to place the retrieved coordinates in
 function getCoordinates (city) { 
    var apiCitySearch = 'https://api.openweathermap.org/geo/1.0/direct?q='
    var rest = "&limit=1&appid="
@@ -104,8 +76,9 @@ function getCoordinates (city) {
            forecast(data[0].lon,data[0].lat)
        })
    })
-
 }
+
+//this function uses the API url and concatenates the coordinates from the searched city through the promise functions
 function getWeather(lon, lat) {
     var getWeatherUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
@@ -122,27 +95,20 @@ function getWeather(lon, lat) {
        })
    })
 }
+
+//function creates and attachess the city input from the user to display the current city weather conditions being searched
 function displayCityName(name) {
-    var searchedCity = document.createElement("h1")
+    var searchedCity = document.createElement("h2")
     searchedCity.textContent = name
-   
     card1.appendChild(searchedCity)
-
 }
-    // var presentDate = document.createElement("h3")
-    // var currentDate = moment().format("MMMM Do YY");
-    // card1.textContent= currentDate
-    //console.log(currentDate)
 
-
-
-
-
-
+//this function hold the dynamic variables in the card1 div displaying the compnents and weather conditions fur current day of any city searched
 function displayCurrentData (data) {
     var imageIcon= document.createElement("img")
     var getIcon= `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`;
-
+    imageIcon.setAttribute("src",getIcon)
+    card1.appendChild(imageIcon)
     var currentTemp= document.createElement("h3")
     currentTemp.textContent= "Temp: " + data.current.temp
     card1.appendChild(currentTemp)
@@ -153,18 +119,14 @@ function displayCurrentData (data) {
     currentHumidity.textContent= "Humidity: " + data.current.humidity
     card1.appendChild(currentHumidity)
     var uvIndex= document.createElement("h3")
-    uvIndex.textContent="UV Index: " + data.current.uvi
+    var buttonDiv=document.createElement("h3")
+    var newButton= document.createElement("button")
+    newButton.textContent= data.current.uvi
+    uvIndex.textContent="UV Index: "
     card1.appendChild(uvIndex)
-    imageIcon.setAttribute("src",getIcon)
-    card1.appendChild(imageIcon)
-
-    console.log(getIcon)
-    //imageIcon.textContent="src=' "
-    // container.appendChild(getIcon)
-    // card2.appendChild(container)
-    console.log(data.current.weather[0].icon);
-    console.log(getIcon)
+    card1.appendChild(newButton)
 }
+//this function uses the API url to get the data of a 7 day forecast but retrieving the coordinates of the inputed city by the user. It then has to pass the data through the promise functions in order to get the data once again
 function forecast (lon, lat) {
     var getForecastUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
@@ -175,36 +137,19 @@ function forecast (lon, lat) {
     .then(function(response){
         response.json()
         .then(function(data) {
-        
-        
-            console.log(data)
-        
             displayForecastData(data)
-
         })
     })
 }
+//this function displays the data of of the next 5 day forecats using the url the fetch function provides. The for loop provide parameters in what kind of data we would like displayed. Giving it a range of what days to select from the array. Elements and tags were created and appended within the function to display the selected conditions
 function displayForecastData (data) {
-    console.log(data.daily)
     card2.innerHTML="";
     for (var i = 1; i < 6; i++) {
-        // var dateShow= document.createElement("h5")
-        // dateShow.innerHTML= display5dDate()
-        // card2.appendChild(container)
-        // function renderDate(date) {
-        // let dt= data.daily[i].dt
-        // var presentDate= new date(dt*1000)
-        // var showMeTheDate= presentDate.toLocaleDateString("en-US")
-        // console.log(showMeTheDate)
-
-        // console.log(dt)
-        // console.log(forecastDate)
-        // }
         var imageIcon= document.createElement("img")
         var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather.icon}@2x.png`;
         imageIcon.setAttribute("src",getIcon)
         card2.appendChild(imageIcon)
-
+        // for this image variable ^^^ I have attempted to try to pull from the api data but it does not recognize the ".icon" for some reason.
         var container= document.createElement("div")
         container.classList.add("card-body2")
         container.classList.add("col-2")
@@ -221,39 +166,5 @@ function displayForecastData (data) {
         humidity.textContent="Humidity: " + data.daily[i].humidity
         container.appendChild(humidity)
         card2.appendChild(container)
-
-
-       
-        // //var imageIcon= document.createElement("img")
-        // var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
-        // //imageIcon.textContent="src=' "
-        // container.appendChild(getIcon)
-        // card2.appendChild(container)
-        // console.log(data.daily[i].weather[0].icon);
-        // console.log(getIcon)
     }
 }
-
-// function display5dDate () {
-//     var showDate = document.createElement("h1")
-//     var currentDate = moment().format("MMMM Do YYYY");
-//     //var date= card1.current[0].dt
-//     //date.textContent- 
-//     //var reformatDate= moment(date, "X").format(1)
-//     card1.appendChild(showDate)
-//     showDate.textContent= currentDate
-//     //console.log(currentDate)
-// }
-
-// function displayDate () {
-//     var showDate = document.createElement("h1")
-//     var currentDate = moment().format("MMMM Do YYYY");
-//     //var date= card1.current[0].dt
-//     //date.textContent- 
-//     //var reformatDate= moment(date, "X").format(1)
-//     card1.appendChild(showDate)
-//     showDate.textContent= currentDate
-//     console.log(currentDate)  
-// }
-
-    

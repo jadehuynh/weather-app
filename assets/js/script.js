@@ -147,17 +147,10 @@ function displayForecastData (data) {
     console.log(data)
     card2.innerHTML="";
     for (var i = 1; i < 6; i++) {
-        var showDateData= document.createElement("h5")
-        var date = data.daily[i].dt
-        var reformatDate = moment(date, "X" ).format("l")
-        showDateData.textContent= "Date: " + reformatDate
-        container.appendChild(showDateData)
-        card2.appendChild(container)
-        console.log(reformatDate)
+       
 
 
-
-        var imageIcon= document.createElement("img")
+var imageIcon= document.createElement("img")
         var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
         imageIcon.setAttribute("src",getIcon)
         card2.appendChild(imageIcon)
@@ -166,6 +159,13 @@ function displayForecastData (data) {
         container.classList.add("card-body2")
         container.classList.add("col-2")
         container.setAttribute("id","forecastBody2")
+        var showDateData= document.createElement("h5")
+        var date = data.daily[i].dt
+        var reformatDate = moment(date, "X" ).format("l")
+        showDateData.textContent= "Date: " + reformatDate
+        container.appendChild(showDateData)
+        card2.appendChild(container)
+        console.log(reformatDate)
         var temp= document.createElement("h5")
         temp.textContent="Temp: " + data.daily[i].temp.day
         container.appendChild(temp)

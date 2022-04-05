@@ -40,18 +40,24 @@ searchButton.addEventListener('click', function(event) {
 
     for (var i = 0; i < searchMistory.length; i++) {
         localStorage.getItem("cities")
-        console.log(localStorage.getItem("cities"))
+        //console.log(localStorage.getItem("cities"))
     }
+    displayDate()
     })
 
     function displayDate () {
         var showDate = document.createElement("h1")
         var currentDate = moment().format("MMMM Do YYYY");
-        
-        console.log(currentDate)
-        displayDate()
+        //var date= card1.current[0].dt
+        //date.textContent- 
+        //var reformatDate= moment(date, "X").format(1)
+        card1.appendChild(showDate)
+        showDate.textContent= currentDate
+        //console.log(currentDate)
+       
     }
-    card1.textContent= currentDate
+  
+    
 // function renderSearchHistory() {
 //     textContent(getCoordinates("atlanta")).display
 //     searchList.append(renderWeather).textContent= searchHistory
@@ -68,6 +74,8 @@ searchButton.addEventListener('click', function(event) {
          //splice out "lat": "lat":44.2945 and "lon": in "lon":-93.2818
         //the code for splicing to retrieve numeric values will go into lat and lon variables
 
+
+
 function forecast (lon, lat) {
     var getForecastUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
     var getLat = "lat=" + lat
@@ -80,7 +88,7 @@ function forecast (lon, lat) {
         .then(function(data) {
         
         
-            console.log(data)
+            //console.log(data)
         
             displayForecastData(data)
 
@@ -110,21 +118,27 @@ function getWeather(lon, lat) {
     var getLat = "lat=" + lat
     var getLon = "&lon=" + lon
     var rest = "&units=imperial&limit=1&appid="
+    var getIcon = 
 
     fetch(getWeatherUrl + getLat + getLon + rest + apiKey)
    .then(function(response){
        response.json()
        .then(function(data) {
-           console.log(data)
+           //console.log(data)
            displayCurrentData(data)
+
        })
    })
+
+
+
 }
 function displayCityName(name) {
     var searchedCity = document.createElement("h1")
     searchedCity.textContent = name
 
     card1.appendChild(searchedCity)
+
 }
  // var presentDate = document.createElement("h3")
     // var currentDate = moment().format("MMMM Do YY");
@@ -134,11 +148,12 @@ function displayCityName(name) {
 
 
 
-// var weatherIcon = document.createElement("p")
-// weatherIcon.appendChild(<img src='https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png' alt='Icon depicting weather.'></img>)
 
 
 function displayCurrentData (data) {
+    var imageIcon= document.createElement("img")
+    var getIcon= `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`;
+
     var currentTemp= document.createElement("h3")
     currentTemp.textContent= "Temp: " + data.current.temp
     card1.appendChild(currentTemp)
@@ -151,14 +166,35 @@ function displayCurrentData (data) {
     var uvIndex= document.createElement("h3")
     uvIndex.textContent="UV Index: " + data.current.uvi
     card1.appendChild(uvIndex)
+    imageIcon.setAttribute("src",getIcon)
+    card1.appendChild(imageIcon)
+
+    console.log(getIcon)
+
+    
+    
+    //imageIcon.textContent="src=' "
+    // container.appendChild(getIcon)
+    // card2.appendChild(container)
+    // console.log(data.daily[i].weather[0].icon);
+    // console.log(getIcon)
 
     
 }
 
+
+
 function displayForecastData (data) {
-    console.log(data.daily)
+   // console.log(data.daily)
     card2.innerHTML="";
     for (var i = 1; i < 6; i++) {
+        var dateShow= document.
+
+        var imageIcon= document.createElement("img")
+        var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[i].icon}@2x.png`;
+        imageIcon.setAttribute("src",getIcon)
+        card2.appendChild(imageIcon)
+
         var container= document.createElement("div")
         container.classList.add("card-body2")
         container.classList.add("col-2")
@@ -171,12 +207,43 @@ function displayForecastData (data) {
         wind.textContent="Wind Speed: " + data.daily[i].wind_speed
         container.appendChild(wind)
         card2.appendChild(container)
+        
         var humidity= document.createElement("h5")
         humidity.textContent="Humidity: " + data.daily[i].humidity
         container.appendChild(humidity)
         card2.appendChild(container)
-        
+
+
+       
+        // //var imageIcon= document.createElement("img")
+        // var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
+        // //imageIcon.textContent="src=' "
+        // container.appendChild(getIcon)
+        // card2.appendChild(container)
+        // console.log(data.daily[i].weather[0].icon);
+        // console.log(getIcon)
     }
 }
+function display5dDate () {
+    var showDate = document.createElement("h1")
+    var currentDate = moment().format("MMMM Do YYYY");
+    //var date= card1.current[0].dt
+    //date.textContent- 
+    //var reformatDate= moment(date, "X").format(1)
+    card1.appendChild(showDate)
+    showDate.textContent= currentDate
+    //console.log(currentDate)
+}
+
+// function displayDate () {
+//     var showDate = document.createElement("h1")
+//     var currentDate = moment().format("MMMM Do YYYY");
+//     //var date= card1.current[0].dt
+//     //date.textContent- 
+//     //var reformatDate= moment(date, "X").format(1)
+//     card1.appendChild(showDate)
+//     showDate.textContent= currentDate
+//     console.log(currentDate)  
+// }
 
     

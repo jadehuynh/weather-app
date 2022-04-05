@@ -30,13 +30,15 @@ h4 {
 }
 button {
     width: 100%;
+    position: center
+    
 }
 .card1 {
     border: black solid 3px;
     padding: 3rem;
     width: 58vw;
     height:50vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(124, 124, 124);
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -60,4 +62,5 @@ button {
     font-size: 1.5rem;
     border: black solid 2px;
     text-align: center;
+
 }

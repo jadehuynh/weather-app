@@ -8,6 +8,6 @@
 
 ### Once the browser is refreshed, the searched names will also be stored in the local storage.
 
-![] ()
+![Deployed URL Image](./assets/images/Screen%20Shot%202022-04-04%20at%2011.53.55%20PM.png)
 
 [Check out the weather application here!](https://jadehuynh.github.io/weather-app/).

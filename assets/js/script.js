@@ -105,6 +105,7 @@ function displayCityName(name) {
 
 //this function hold the dynamic variables in the card1 div displaying the compnents and weather conditions fur current day of any city searched
 function displayCurrentData (data) {
+    console.log(data)
     var imageIcon= document.createElement("img")
     var getIcon= `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`;
     imageIcon.setAttribute("src",getIcon)
@@ -143,10 +144,21 @@ function forecast (lon, lat) {
 }
 //this function displays the data of of the next 5 day forecats using the url the fetch function provides. The for loop provide parameters in what kind of data we would like displayed. Giving it a range of what days to select from the array. Elements and tags were created and appended within the function to display the selected conditions
 function displayForecastData (data) {
+    console.log(data)
     card2.innerHTML="";
     for (var i = 1; i < 6; i++) {
+        var showDateData= document.createElement("h5")
+        var date = data.daily[i].dt
+        var reformatDate = moment(date, "X" ).format("l")
+        showDateData.textContent= "Date: " + reformatDate
+        container.appendChild(showDateData)
+        card2.appendChild(container)
+        console.log(reformatDate)
+
+
+
         var imageIcon= document.createElement("img")
-        var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather.icon}@2x.png`;
+        var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
         imageIcon.setAttribute("src",getIcon)
         card2.appendChild(imageIcon)
         // for this image variable ^^^ I have attempted to try to pull from the api data but it does not recognize the ".icon" for some reason.

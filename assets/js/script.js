@@ -120,12 +120,30 @@ function displayCurrentData (data) {
     currentHumidity.textContent= "Humidity: " + data.current.humidity
     card1.appendChild(currentHumidity)
     var uvIndex= document.createElement("h3")
-    var buttonDiv=document.createElement("h3")
+    var buttonDiv=document.createElement("div")
     var newButton= document.createElement("button")
+    newButton.classList.add("btn")
+    //added an if function to help show the color of the uv index- because there is not an orange color in bootstrap, hence making the extra class and styling it in css
+    newButton.classList.add("col-2")
+    if(data.current.uvi < 2) {
+    newButton.classList.add("btn-success")
+    }
+    else if(data.current.uvi > 2 && data.current.uvi < 6 ) { 
+    newButton.classList.add("btn-warning")
+    }
+    else if(data.current.uvi > 6 && data.current.uvi < 7 ) { 
+        newButton.classList.add("btn")
+        newButton.classList.add("orange")
+        }
+        else {newButton.classList.add("btn-danger")}
     newButton.textContent= data.current.uvi
     uvIndex.textContent="UV Index: "
-    card1.appendChild(uvIndex)
-    card1.appendChild(newButton)
+    //moved the appended divs to display the button at the bottom of the container
+    buttonDiv.classList.add("d-flex")
+    buttonDiv.classList.add("justify-content-center")
+    buttonDiv.appendChild(uvIndex)
+    buttonDiv.appendChild(newButton)
+    card1.appendChild(buttonDiv)
 }
 //this function uses the API url to get the data of a 7 day forecast but retrieving the coordinates of the inputed city by the user. It then has to pass the data through the promise functions in order to get the data once again
 function forecast (lon, lat) {
@@ -147,18 +165,15 @@ function displayForecastData (data) {
     console.log(data)
     card2.innerHTML="";
     for (var i = 1; i < 6; i++) {
-       
-
-
-var imageIcon= document.createElement("img")
+        var imageIcon= document.createElement("img")
         var getIcon= `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
         imageIcon.setAttribute("src",getIcon)
-        card2.appendChild(imageIcon)
-        // for this image variable ^^^ I have attempted to try to pull from the api data but it does not recognize the ".icon" for some reason.
+        //image icon toward the top to display weather conditions below
         var container= document.createElement("div")
         container.classList.add("card-body2")
         container.classList.add("col-2")
         container.setAttribute("id","forecastBody2")
+        container.appendChild(imageIcon)
         var showDateData= document.createElement("h5")
         var date = data.daily[i].dt
         var reformatDate = moment(date, "X" ).format("l")

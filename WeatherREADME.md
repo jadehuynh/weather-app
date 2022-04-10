@@ -8,6 +8,20 @@
 
 ### Once the browser is refreshed, the searched names will also be stored in the local storage.
 
+![](https://img.shields.io/badge/License-MIT-yellowgreen)
+
 ![Deployed URL Image](./assets/images/Screen%20Shot%202022-04-04%20at%2011.53.55%20PM.png)
 
 [Check out the weather application here!](https://jadehuynh.github.io/weather-app/).
+
+
+
+## 
+[Prompt displays informing user of rules. Once the player clicks'OK' the game begins!](./assets/image/gamephoto.png)
+
+
+![](./assets/images/weasearch.png) 
+
+![](./assets/images/wealocstrge.png) 
+
+[Click this link to test your JavaScript knowledge!](https://jadehuynh.github.io/timed-game/) 

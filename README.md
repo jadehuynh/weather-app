@@ -9,8 +9,12 @@
 ### Displaying the current data is a section in gray showing the name of the city, date, and icon representing the current conditions. It also displays the temperature, wind speed, humidity, and UV Index with a button. The 5 Day Forecast shows similar conditions, but fortunately I was abe to successfully get a displayed icon and date in each card.
 
 ### Once the browser is refreshed, the searched names will also be stored in the local storage.
-
-![](https://img.shields.io/badge/License-MIT-yellowgreen)
+----
+## Languages Used:
+    * HTML
+    * CSS
+    * JAVASCRIPT
+    * API Data
 
 ![Deployed URL Image](./assets/images/Screen%20Shot%202022-04-04%20at%2011.53.55%20PM.png)
 

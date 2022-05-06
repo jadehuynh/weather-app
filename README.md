@@ -1,100 +1,29 @@
-# 06 Server-Side APIs: Weather Dashboard
+# Weather App Created By Jade Huynh
+----
+![](https://camo.githubusercontent.com/c652dbcdb4bc224b3e4d7bd673bdbf698c6681a7503057b555e88f47eb523af5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f77677265656e)
 
-## Your Task
+### My weather application was developed to be able to search for current and forecasted conditions in the future. API's were used to retrieve specific data targeting coordinates of the "searched city" and then concatenated into another API URL to load the data.
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+### Simply search a desired city or cities, and there will be a list created below to store previous selections. You are then able to also retrieve current weather and forecasted conditions for that city.
 
-Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
+### Displaying the current data is a section in gray showing the name of the city, date, and icon representing the current conditions. It also displays the temperature, wind speed, humidity, and UV Index with a button. The 5 Day Forecast shows similar conditions, but fortunately I was abe to successfully get a displayed icon and date in each card.
 
-## User Story
+### Once the browser is refreshed, the searched names will also be stored in the local storage.
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+![](https://img.shields.io/badge/License-MIT-yellowgreen)
 
-## Acceptance Criteria
+![Deployed URL Image](./assets/images/Screen%20Shot%202022-04-04%20at%2011.53.55%20PM.png)
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+[Check out the weather application here!](https://jadehuynh.github.io/weather-app/).
 
-## Mock-Up
 
-The following image shows the web application's appearance and functionality:
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+## 
+[Prompt displays informing user of rules. Once the player clicks'OK' the game begins!](./assets/image/gamephoto.png)
 
-## Grading Requirements
 
-> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+![](./assets/images/weasearch.png) 
 
-This homework is graded based on the following criteria: 
+![](./assets/images/wealocstrge.png) 
 
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-    * Uses the OpenWeather API to retrieve weather data.
-
-    * Uses `localStorage` to store persistent data.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+[Click this link to test your JavaScript knowledge!](https://jadehuynh.github.io/timed-game/) 
